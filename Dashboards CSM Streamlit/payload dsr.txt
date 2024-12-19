@@ -1,0 +1,29 @@
+#check forms with ID 
+Post:
+https://app.securiti.ai/reporting/v1/sources/query?ref=getListOfDSRForms
+{"source":"dsr_form","response_config":{"format":1},"skip_cache":true,"fields":[{"name":"id"},{"name":"uuid"},{"name":"description"},{"name":"version"},{"name":"title"},{"name":"owner_id"},{"name":"org_name"},{"name":"published_at"},{"name":"modified_at"},{"name":"is_internal"},{"name":"status"},{"name":"org_unit_id"},{"name":"org_unit_name"},{"name":"embedded_form_url"},{"name":"form_url"},{"name":"created_at"},{"name":"form_coowner_id","type":"aggregate","options":{"function":"count_distinct","alias":"coowner_count"}}],"group_by":[{"field":"id"},{"field":"org_unit_name"}],"pagination":{"type":"limit-offset","offset":0,"limit":25,"omit_total":false},"order_by":["-modified_at"]}
+
+#check ID checks 
+
+https://app.securiti.ai/privaci/v1/admin/dsr/forms/4 
+
+
+Config Retendion policy 
+https://app.securiti.ai/privaci/v1/admin/dsr/archive/config
+
+DSR reporting
+https://app.securiti.ai/privaci/v1/admin/dsr/download/config
+
+DSR Password less
+https://app.securiti.ai/privaci/v1/admin/dsr/pwd_less_login/config
+
+
+Total assessment
+https://app.securiti.ai/reporting/v1/sources/query?ref=getTotalInternalAssessmentData
+
+{"source":"assessment","skip_cache":true,"response_config":{"format":1},"fields":[{"name":"id","type":"aggregate","options":{"alias":"total_internal","function":"count_distinct"}}],"filter":{"op":"and","value":[{"op":"isnull","field":"vendor_id","value":true}]}}
+
+Data Map assessment
+
+https://app.securiti.ai/privaci/v1/user/assessments/?sort=-modified_at&limit=25&data_mapping_only=true&not_bw_compatible=true
+sort=-modified_at&limit=25&data_mapping_only=true&not_bw_compatible=true
